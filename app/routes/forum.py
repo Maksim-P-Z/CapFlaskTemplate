@@ -46,6 +46,7 @@ def postNew():
             subject = form.subject.data,
             content = form.content.data,
             author = current_user.id,
+            information = form.information.data,
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
@@ -97,6 +98,7 @@ def postEdit(postID):
 
     form.subject.data = editPost.subject
     form.content.data = editPost.content
+    form.information.data = editPost.information
 
     return render_template('postform.html',form=form)
 

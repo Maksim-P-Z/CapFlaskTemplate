@@ -2,6 +2,7 @@
 # and users fill them out.  Each form is an instance of of a class. Forms are managed by the 
 # Flask-WTForms library.
 
+from tkinter.tix import Select
 from flask.app import Flask
 from flask import flash
 from flask_wtf import FlaskForm
@@ -59,10 +60,14 @@ class ProfileForm(FlaskForm):
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
     submit = SubmitField('Post')
+    role = SelectField('Role', choices=[('Geo-Novice','Geo-Novice'), ('Geo-Expert','Geo-Expert')])
+    age = StringField('Age', validators=[DataRequired()]) 
+
 
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
+    information = SelectField("Information Type", choices=[('Factual','Factual'), ('Opinion','Opinion')])
     submit = SubmitField('Post')
 
 class CommentForm(FlaskForm):

@@ -4,10 +4,11 @@
 # fields have types like IntField, StringField etc.  This uses the Mongoengine Python Library. When 
 # you interact with the data you are creating an onject that is an instance of the class.
 
+from ast import Str
 from app import app
 from flask import flash
 from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE
+from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, IntField, URLField, CASCADE
 from flask_mongoengine import Document
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime as dt
@@ -65,6 +66,21 @@ class Comment(Document):
     content = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Fact(Document):
+    title = StringField()
+    author = ReferenceField('User',reverse_delete_rule=CASCADE)
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    blurb = StringField()
+    photo = FileField()
+    media = URLField()
+    votes = IntField() 
+    comment = StringField()
 
     meta = {
         'ordering': ['-createdate']

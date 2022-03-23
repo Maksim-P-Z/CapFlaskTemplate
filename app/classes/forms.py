@@ -71,3 +71,10 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+class FactForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+    blurb = TextAreaField('blurb', validators=[DataRequired()])
+    photo = FileField('photo', validators=[DataRequired()])
+    information = SelectField("Information Type", choices=[('Factual','Factual'), ('Opinion','Opinion')])
+    submit = SubmitField('Post')

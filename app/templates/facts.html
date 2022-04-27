@@ -1,0 +1,22 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for fact in facts %}
+
+{fact.title} <br>
+{fact.author} <br>
+{fact.createDate} <br>
+{fact.modifyDate} <br>
+{fact.blurb} <br>
+{fact.information} <br>
+{fact.photo} <br>
+{fact.media} <br>
+{fact.votes} <br>
+{fact.comment} <br><br>
+
+{% endfor %}
+
+{% endblock %}

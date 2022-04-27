@@ -44,3 +44,10 @@ def factDelete(factId):
     deleteFact = Fact.objects.get(id = factId)
     flash(f"Deleteing fact named {deleteFact.title}.")
     deleteFact.delete()
+    return redirect(url_for('factList'))
+
+@app.route('/fact/list')
+@login_required
+def factList():
+    factList = Fact.objects()
+    return render_template('fact.html', facts=factList)

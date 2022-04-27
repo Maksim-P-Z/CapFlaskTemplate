@@ -8,6 +8,7 @@ from flask import flash
 from flask_wtf import FlaskForm
 from mongoengine.fields import EmailField
 import mongoengine.errors
+from wtforms.fields.html5 import URLField
 from wtforms.validators import URL, NumberRange, Email, Optional, InputRequired, ValidationError, DataRequired, EqualTo
 from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField
 from app.classes.data import User
@@ -73,8 +74,9 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Comment')
 
 class FactForm(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
-    blurb = TextAreaField('blurb', validators=[DataRequired()])
-    photo = FileField('photo', validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired()])
+    blurb = TextAreaField('Blurb', validators=[DataRequired()])
+    photo = FileField('Photo', validators=[DataRequired()])
+    media = URLField()
     information = SelectField("Information Type", choices=[('Factual','Factual'), ('Opinion','Opinion')])
     submit = SubmitField('Post')

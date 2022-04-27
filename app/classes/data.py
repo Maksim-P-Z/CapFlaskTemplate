@@ -74,8 +74,8 @@ class Comment(Document):
 class Fact(Document):
     title = StringField()
     author = ReferenceField('User',reverse_delete_rule=CASCADE)
-    createdate = DateTimeField(default=dt.datetime.utcnow)
-    modifydate = DateTimeField()
+    createDate = DateTimeField(default=dt.datetime.utcnow)
+    modifyDate = DateTimeField()
     blurb = StringField()
     photo = FileField()
     media = URLField()

@@ -50,4 +50,4 @@ def factDelete(factId):
 @login_required
 def factList():
     factList = Fact.objects()
-    return render_template('fact.html', facts=factList)
+    return render_template('fact.html', facts=factlList)
